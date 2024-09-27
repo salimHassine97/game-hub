@@ -3,7 +3,7 @@ import React from "react";
 
 const GameCardSkeleton = () => {
   return (
-    <Card overflow={"hidden"} borderRadius={10} width={"300px"}>
+    <Card>
       <Skeleton height={"200px"} />
       <CardBody>
         <SkeletonText />
