@@ -3,9 +3,15 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import Genre from "../interfaces/Genre";
 
-const GameGrid = () => {
-  const { data, error, isLoading } = useGames();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  //on utilise le selected genre pour fetch les donné dans le query
+  const { data, error, isLoading } = useGames(selectedGenre);
   const skeletonTable = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -18,13 +24,13 @@ const GameGrid = () => {
       >
         {isLoading &&
           skeletonTable.map((s) => (
-            <GameCardContainer>
-              <GameCardSkeleton key={s} />
+            <GameCardContainer key={s}>
+              <GameCardSkeleton />
             </GameCardContainer>
           ))}
         {data.map((g) => (
-          <GameCardContainer>
-            <GameCard game={g} key={g.id} />
+          <GameCardContainer key={g.id}>
+            <GameCard game={g} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
