@@ -12,7 +12,7 @@ interface Props {
 const GameGrid = ({ selectedGenre }: Props) => {
   //on utilise le selected genre pour fetch les donné dans le query
   const { data, error, isLoading } = useGames(selectedGenre);
-  const skeletonTable = [1, 2, 3, 4, 5, 6];
+  const skeletonTable = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <>
