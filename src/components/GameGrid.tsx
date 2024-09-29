@@ -5,15 +5,15 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import Genre from "../interfaces/Genre";
 import Platform from "../interfaces/Platform";
+import GameQuery from "../interfaces/GameQuery";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+const GameGrid = ({ gameQuery }: Props) => {
   //on utilise le selected genre pour fetch les donné dans le query
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletonTable = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (

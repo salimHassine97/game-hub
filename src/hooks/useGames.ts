@@ -1,21 +1,19 @@
 import Game from "../interfaces/Game";
+import GameQuery from "../interfaces/GameQuery";
 import Genre from "../interfaces/Genre";
 import Platform from "../interfaces/Platform";
 import useData, { FetchResponse } from "./useData";
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) =>
+const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id,
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   ); //params de query axios query
 //ajouter le selected platform dans le dependency
 
